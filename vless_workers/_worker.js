@@ -1,13 +1,13 @@
-// @ts-ignore
-import { connect } from 'cloudflare:sockets';
+//@ts-忽略
+ 从‘cloudflare:sockets’导入{  connect  } ； 
 
-// How to generate your own UUID:
-// [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
-let userID = 'd342d11e-d424-4583-b36e-524ab1f0afa4';
+// 如何生成自己的 UUID：
+// [Windows] 按“Win + R”，输入 cmd 并运行：Powershell -NoExit -Command "[guid]::NewGuid()"
+让 用户ID = 'd342d11e-d424-4583-b36e-524ab1f0afa1' ;
 
-const proxyIPs = ['cdn.xn--b6gac.eu.org', 'cdn-all.xn--b6gac.eu.org', 'workers.cloudflare.cyou'];
+const 代理IP = [ 'cdn.xn--b6gac.eu.org' , 'cdn-all.xn--b6gac.eu.org' , 'workers.cloudflare.cyou' ] ;
 
-// if you want to use ipv6 or single proxyIP, please add comment at this line and remove comment at the next line
+// 如果您想使用 ipv6 或单代理 IP，请在此行添加注释并在下一行删除注释
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
 // use single proxyIP instead of random
 // let proxyIP = 'cdn.xn--b6gac.eu.org';
@@ -17,20 +17,20 @@ let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
 let dohURL = 'https://sky.rethinkdns.com/1:-Pf_____9_8A_AMAIgE8kMABVDDmKOHTAKg='; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
 
 if (!isValidUUID(userID)) {
-	throw new Error('uuid is invalid');
+	抛出 新的错误（'uuid 无效' ）；
 }
 
-function getprotocol() {
-	let matter = ['v','l','e','s','s']
-	let result=''
-	for (let i = 0; i < 5; i++) {
-	  result += matter[i];
+函数 获取协议（） {
+	让 物质= [ 'v' , 'l' , 'e' , 's' , 's' ]
+	让 结果= ''
+	对于 （设 i = 0 ; i < 5 ; i++ ） {
+	  结果 += 物质[ i ]；
 	}
-	return result;
+	返回结果；
   }
 
 
-export default {
+导出 默认 {
 	/**
 	 * @param {import("@cloudflare/workers-types").Request} request
 	 * @param {{UUID: string, PROXYIP: string, DNS_RESOLVER_URL: string, NODE_ID: int, API_HOST: string, API_TOKEN: string}} env
@@ -76,8 +76,8 @@ export default {
 							}
 						});
 					};
-					case `/sub/${userID_Path}`: {
-						const url = new URL(request.url);
+					案例 `/sub/ ${ userID_Path } `：{
+						const  url =新的URL (请求. url ) ;
 						const searchParams = url.searchParams;
 						const bbbSubConfig = createbbbSub(userID, request.headers.get('Host'));
 						// Construct and return response object
